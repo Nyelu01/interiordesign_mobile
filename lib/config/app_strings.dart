@@ -1,0 +1,34 @@
+class AppStrings {
+  static const appName = 'InteriorDesign-link';
+  static const helloWelcome = 'Hello, welcome back!';
+  static const registerHere = 'Register Here!';
+  static const loginToContinue = 'Login to continue';
+  static const name = 'Full Name';
+  static const email = 'Email';
+  static const password = 'Password';
+  static const dontHaveAccount = "Dont't have an account? ";
+  static const alreadyhaveaccount = "Already have an account? ";
+  static const login = 'Login';
+  static const register = 'Register';
+  static const signup = 'Sign up';
+  static const signin = 'Sign in';
+  static const home = 'Home';
+  static const favorites = 'Favorites';
+  static const add = 'Add';
+  static const messages = 'Messages';
+  static const user = 'User';
+  static const posts = 'Posts';
+  static const following = 'Following';
+  static const profile = 'Profile';
+  static const edit = 'Edit';
+  static const logout = 'Log out';
+  static const editProfile = 'Edit Profile';
+  static const phoneNumber = 'Phone number';
+  static const location = 'Location';
+  static const birthday = 'Birthday';
+  static const male = 'Male';
+  static const female = 'Female';
+  static const gender = 'Gender';
+  static const nearby = 'Nearby';
+  static const ptitle = 'Project Description';
+}
