@@ -120,7 +120,7 @@ class _HomeViewState extends State<HomeView> {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                project.projectName ?? '',
+                                project.projectName,
                                 style: const TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,

@@ -42,7 +42,6 @@ class loginRequest {
         } else {
           // Show error message if the response does not contain user and token
           // ignore: use_build_context_synchronously
-          Map<String, dynamic> responseBody = json.decode(response.body);
 
           showDialog(
             context: context,

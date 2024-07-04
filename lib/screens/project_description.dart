@@ -76,7 +76,7 @@ class _ProjectImagesState extends State<ProjectImages> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.project.projectName ?? '',
+                    widget.project.projectName,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class _ProjectImagesState extends State<ProjectImages> {
                         color: Colors.grey,
                       ),
                       Text(
-                        widget.project.projectLocation ?? '',
+                        widget.project.projectLocation,
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -142,7 +142,7 @@ class _ProjectImagesState extends State<ProjectImages> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        widget.project.projectName ?? '',
+                        widget.project.projectName,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -157,7 +157,7 @@ class _ProjectImagesState extends State<ProjectImages> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        widget.project.totalBudget ?? '',
+                        widget.project.totalBudget,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -172,7 +172,7 @@ class _ProjectImagesState extends State<ProjectImages> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        widget.project.description ?? '',
+                        widget.project.description,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,

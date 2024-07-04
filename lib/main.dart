@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:interiordesign_mobile/pages/Authentication/views/login_view.dart';
-import 'package:interiordesign_mobile/pages/SplashView/SplashView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
