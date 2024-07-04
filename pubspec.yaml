@@ -41,6 +41,13 @@ dependencies:
   carousel_slider: ^4.2.1
   shared_preferences: ^2.2.2 #to save data to device this is used to load onboard for the first time only
   iconsax: ^0.0.8
+  flutter_svg: ^2.0.10+1
+  http: ^1.2.0
+  path_provider: ^2.1.2
+  fluttertoast: ^8.2.2
+  equatable: ^2.0.5
+  flutter_pdfview: ^1.3.2
+
 
 dev_dependencies:
   flutter_test:
@@ -81,7 +88,8 @@ flutter:
   assets:
     - assets/on_boarding_images/
     - assets/home/
-    - assets/project_images/
+    - assets/budget.pdf
+    - assets/pdf_icon.png
    
 
   #   - images/a_dot_ham.jpeg

@@ -34,18 +34,6 @@ class ProjectListAppbar extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        // IconButton(
-        //   onPressed: () {},
-        //   style: IconButton.styleFrom(
-        //     backgroundColor: Colors.white,
-        //     fixedSize: const Size(55, 55),
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(15),
-        //     ),
-        //   ),
-        //   color: Colors.black,
-        //   icon: const Icon(Iconsax.notification),
-        // ),
       ],
     );
   }

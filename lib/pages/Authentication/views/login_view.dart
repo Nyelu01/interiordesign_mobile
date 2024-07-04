@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:interiordesign_mobile/config/app_strings.dart';
 import 'package:interiordesign_mobile/pages/Authentication/views/register_view.dart';
-import 'package:interiordesign_mobile/screens/home.dart';
+import 'package:interiordesign_mobile/requests/login_request.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -12,6 +12,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  // final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +54,7 @@ class _LoginViewState extends State<LoginView> {
                     height: 56,
                   ),
                   TextFormField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: AppStrings.email,
                       prefixIcon: Icon(FontAwesomeIcons.envelope),
@@ -65,8 +70,11 @@ class _LoginViewState extends State<LoginView> {
                     height: 16,
                   ),
                   TextFormField(
+                    controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: AppStrings.password,
+                      // controller: passwordController,
                       prefixIcon: Icon(FontAwesomeIcons.lock),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
@@ -83,14 +91,18 @@ class _LoginViewState extends State<LoginView> {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => Home()));
+                        loginRequest.login(
+                          context,
+                          emailController.text,
+                          passwordController.text,
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 91, 90, 92),
                         foregroundColor: Colors.white,
                       ),
-                      child: Text(AppStrings.login),
+                      child: Text(
+                          AppStrings.login), // The child parameter added here
                     ),
                   ),
                   Row(

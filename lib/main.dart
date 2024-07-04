@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:interiordesign_mobile/pages/Authentication/views/login_view.dart';
 import 'package:interiordesign_mobile/pages/SplashView/SplashView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,7 +40,7 @@ class _MyAppState extends State<MyApp> {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 111, 110, 112)),
         useMaterial3: true,
       ),
-      home: SplashView(),
+      home: LoginView(),
       // home: onboarding ? const Home() : const OnboardingView(),
     );
   }

@@ -3,7 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:interiordesign_mobile/config/app_strings.dart';
 
 class RegionList extends StatefulWidget {
-  const RegionList({super.key});
+  final String labelText;
+  final TextEditingController controller;
+
+  const RegionList({
+    Key? key,
+    required this.labelText,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   State<RegionList> createState() => _RegionListState();
@@ -36,13 +43,14 @@ class _RegionListState extends State<RegionList> {
     "Tabora",
     "Tanga",
   ];
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
       value: selectedLocation,
       dropdownColor: Colors.grey[200],
       decoration: InputDecoration(
-        hintText: AppStrings.location,
+        hintText: widget.labelText,
         prefixIcon: Icon(FontAwesomeIcons.mapMarkerAlt),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -56,7 +64,12 @@ class _RegionListState extends State<RegionList> {
                 child: Text(location),
               ))
           .toList(),
-      onChanged: (value) => setState(() => selectedLocation = value),
+      onChanged: (value) {
+        setState(() {
+          selectedLocation = value;
+          widget.controller.text = value ?? '';
+        });
+      },
     );
   }
 }

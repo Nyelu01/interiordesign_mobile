@@ -12,23 +12,18 @@ class AppStrings {
   static const register = 'Register';
   static const signup = 'Sign up';
   static const signin = 'Sign in';
+  static const submit = 'Submit';
   static const home = 'Home';
   static const favorites = 'Favorites';
   static const add = 'Add';
   static const messages = 'Messages';
   static const user = 'User';
-  static const posts = 'Posts';
-  static const following = 'Following';
   static const profile = 'Profile';
   static const edit = 'Edit';
   static const logout = 'Log out';
   static const editProfile = 'Edit Profile';
   static const phoneNumber = 'Phone number';
   static const location = 'Location';
-  static const birthday = 'Birthday';
-  static const male = 'Male';
-  static const female = 'Female';
-  static const gender = 'Gender';
-  static const nearby = 'Nearby';
-  static const ptitle = 'Project Description';
+  static const pdescription = 'Project Description';
+  static const submitrequirement = 'Submit your requirements to designer';
 }

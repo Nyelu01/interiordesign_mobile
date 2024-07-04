@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeSearchBar extends StatelessWidget {
+  final ValueChanged<String>? onChanged;
+
   const HomeSearchBar({
-    super.key,
-  });
+    Key? key,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +21,13 @@ class HomeSearchBar extends StatelessWidget {
         horizontal: 20,
         vertical: 5,
       ),
-      child: const Row(
+      child: Row(
         children: [
           Icon(Iconsax.search_normal),
           SizedBox(width: 10),
           Expanded(
             child: TextField(
+              onChanged: onChanged,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Search service type",

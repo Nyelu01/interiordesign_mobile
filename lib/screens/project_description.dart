@@ -1,13 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:interiordesign_mobile/Components/Project.dart';
-import 'package:interiordesign_mobile/config/colors.dart';
-import 'package:interiordesign_mobile/widgets/project_images.dart';
-import 'package:interiordesign_mobile/config/app_strings.dart';
+import 'package:interiordesign_mobile/Model/project_model.dart';
+import 'package:interiordesign_mobile/end_point.dart';
+import 'package:interiordesign_mobile/screens/submit_requirement.dart';
 
 class ProjectImages extends StatefulWidget {
-  final Project project;
+  final ProjectItem project;
   const ProjectImages({Key? key, required this.project}) : super(key: key);
 
   @override
@@ -15,35 +13,32 @@ class ProjectImages extends StatefulWidget {
 }
 
 class _ProjectImagesState extends State<ProjectImages> {
-  late List<ImageContainer> carouselItems;
+  late List<Widget> carouselItems;
 
   @override
   void initState() {
     super.initState();
-    carouselItems = [
-      ImageContainer(imagePath: 'assets/project_images/p1.jpeg'),
-      ImageContainer(imagePath: 'assets/project_images/p2.jpeg'),
-      ImageContainer(imagePath: 'assets/project_images/p3.jpeg'),
-    ];
+    carouselItems = widget.project.attachments
+        .map((attachment) => Image.network(
+              '${serverUrlPlain}storage/${attachment.url}',
+              fit: BoxFit.cover,
+            ))
+        .toList();
+
+    // Debugging output
+    print('Generated carousel items: $carouselItems');
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String serviceType = widget.project.service_type;
-    String designer = widget.project.designer;
-    String location = widget.project.location;
-    String grade = "${widget.project.grade}/5";
-    String projectName = widget.project.name;
-    String budget = widget.project.budget;
-    String description = widget.project.description;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.ptitle),
+        title: const Text('Project Details'),
         backgroundColor: Colors.grey[300], // Your desired background color
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -74,41 +69,41 @@ class _ProjectImagesState extends State<ProjectImages> {
                 ),
               ),
             ),
-            SizedBox(height: 10), // Removed const
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    serviceType,
+                    widget.project.projectName ?? '',
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10), // Removed const
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       const Icon(
-                        Iconsax.user,
+                        Icons.person,
                         size: 20,
                         color: Colors.grey,
                       ),
-                      Text(
-                        "By: $designer",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
+                      // Text(
+                      //   "By: ${widget.project.user?.name ?? ''}",
+                      //   style: const TextStyle(
+                      //     fontSize: 14,
+                      //     color: Colors.grey,
+                      //   ),
+                      // ),
                       const Icon(
-                        Iconsax.location,
+                        Icons.location_on,
                         size: 20,
                         color: Colors.grey,
                       ),
                       Text(
-                        location,
+                        widget.project.projectLocation ?? '',
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -116,17 +111,17 @@ class _ProjectImagesState extends State<ProjectImages> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10), // Removed const
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Icon(
-                        Iconsax.star5,
+                        Icons.star,
                         color: Colors.yellow.shade700,
                         size: 25,
                       ),
-                      SizedBox(width: 5), // Removed const
+                      const SizedBox(width: 5),
                       Text(
-                        grade,
+                        '${widget.project.projectGrade}/5',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -134,63 +129,71 @@ class _ProjectImagesState extends State<ProjectImages> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20), // Removed const
+                  const SizedBox(height: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Project name",
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5), // Removed const
+                      const SizedBox(height: 5),
                       Text(
-                        projectName,
+                        widget.project.projectName ?? '',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Budget",
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5), // Removed const
+                      const SizedBox(height: 5),
                       Text(
-                        budget,
+                        widget.project.totalBudget ?? '',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Description",
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5), // Removed const
+                      const SizedBox(height: 5),
                       Text(
-                        description,
+                        widget.project.description ?? '',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
                         ),
                       ),
-                      SizedBox(height: 20), // Added const
+                      const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => SubmitRequirement(
+                                  projectId: widget.project.id),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryColor,
+                          backgroundColor:
+                              const Color.fromARGB(255, 140, 143, 146),
                           foregroundColor: Colors.white,
                         ),
-                        child: Text("Send direct inquiry"), // Removed const
+                        child: const Text("Send direct inquiry"),
                       ),
                     ],
                   ),
